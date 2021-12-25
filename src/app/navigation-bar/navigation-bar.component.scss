@@ -6,7 +6,7 @@
 
 $margin: 15px;
 $height: 40px;
-$navigation-background-color: rgba(255,255,255, 0.5);
+$navigation-background-color: white;
 $border-radius: 20px;
 $active-text-color: white;
 
@@ -28,13 +28,11 @@ $active-text-color: white;
 
 .content {
     background-color: $navigation-background-color;
-    backdrop-filter: blur(30px);
     height: $height;
     margin: $margin;
     border-radius: $border-radius;
     width: 75%;
     float: right;
-    backdrop-filter: blur(30px);
 
     ul {
         height: 100%;
@@ -58,8 +56,7 @@ $active-text-color: white;
                     position: absolute;
                     width: 200px;
                     height: $height;
-                    background-color: $navigation-background-color;
-                    backdrop-filter: blur(100%);
+                    background-color: midnightblue;
                     border: 0px solid $background-color;
                     border-radius: 25px;
                     z-index: 5;
@@ -71,8 +68,8 @@ $active-text-color: white;
                     z-index: 10;
                     text-align: center;
                     transition: 0.5s;
-                    
-                    &.icon{
+
+                    &.icon {
                         @media only screen and (min-width: $min-width) {
                             margin-right: 5px;
                         }
@@ -90,7 +87,7 @@ $active-text-color: white;
                         transform: translateY(20px);
                     }
 
-                    span{
+                    span {
                         transform: translateY(20px);
                     }
                 }
@@ -127,7 +124,7 @@ $active-text-color: white;
                     .selector {
                         width: 50px;
                         height: 50px;
-                        //border: 5px solid $background-color;
+                        border: 5px solid $background-color;
                         border-radius: 50%;
                         transform: translateX(-1px) translateY(-1px);
                     }
