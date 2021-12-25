@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+$min-width: 1001px;
+$max-width: 1000px;
+$img-size: 300px;
+$background-color: #222327;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  //background-color: $background-color;
+  background: linear-gradient(blue, purple);
+}

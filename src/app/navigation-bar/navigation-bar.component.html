@@ -1,0 +1,19 @@
+<div class="title">
+    <div class="display">
+        <span #title>{{this.pageTitle}}</span>
+    </div>
+</div>
+
+<div class="content">
+    <ul #navigationList>
+        <li [class]="page.active? 'active': ''" *ngFor="let page of pages">
+            <a routerLink="{{page.href}}" class="navigationAnchor">
+                <div class="selector"></div>
+                <span class="icon">
+                    <i [class]="page.icon"></i>
+                </span>
+                <span class="text">{{page.name}}</span>
+            </a>
+        </li>
+    </ul>
+</div>

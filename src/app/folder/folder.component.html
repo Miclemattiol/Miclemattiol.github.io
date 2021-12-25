@@ -1,0 +1,8 @@
+<div class="folder {{active? 'active': ''}}" (click)="triggerFolder()">
+    <div class="fold">
+        <ng-content select="img" class="img"></ng-content>
+    </div>
+    <div class="description">
+        <ng-content select="p"></ng-content>
+    </div>
+</div>
