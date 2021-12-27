@@ -1,0 +1,234 @@
+@use "sass:math";
+
+@import "../../../scss/theme/colors.scss";
+@import "../../../scss/theme/themes.scss";
+@import "../../../scss/variables.scss";
+
+.root.side-menu {
+    .title {
+        display: none;
+    }
+
+    .navigation {
+        $width: $side-menu-width;
+        $icon-width: $side-menu-icons;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: $icon-width;
+        overflow-x: hidden;
+        transition: $side-menu-open-speed;
+
+        .toggle {
+            $btnSize: 50px;
+            $spanSize: 30px;
+            $span1Size: 20px;
+            $span2Size: 10px;
+            position: relative;
+            width: $btnSize;
+            height: $btnSize;
+            margin: 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            cursor: pointer;
+
+            span {
+                position: absolute;
+                width: 30px;
+                height: 4px;
+                border-radius: 4px;
+                transition: 0.5s;
+
+                &:nth-child(1) {
+                    transform: translateY(-10px);
+                    width: $span1Size;
+                    left: 10px;
+                }
+                &:nth-child(2) {
+                    transform: translateY(10px);
+                    width: $span2Size;
+                    left: 10px;
+                }
+            }
+
+            &.active {
+                span {
+                    &:nth-child(1) {
+                        width: $spanSize;
+                        transform: translateY(0) rotate(45deg);
+                        transition-delay: 0.125s;
+                    }
+                    &:nth-child(2) {
+                        width: $spanSize;
+                        transform: translateY(0) rotate(315deg);
+                        transition-delay: 0.125s;
+                    }
+                    &:nth-child(3) {
+                        transform: translateX($btnSize);
+                    }
+                }
+            }
+        }
+
+        ul {
+            width: $width;
+            display: flex;
+            flex-direction: column;
+            transition: 0.5s;
+
+            li {
+                list-style: none;
+                height: $icon-width;
+
+                &.active {
+                    position: relative;
+                    
+
+                    .selector {
+                        position: absolute;
+                        height: $icon-width - 20px;
+                        width: $icon-width;
+                        border-radius: 0 math.div($icon-width - 20px, 2) math.div($icon-width - 20px, 2) 0;
+                        top: 10px;
+                        left: 0px;
+                        z-index: -1;
+                        transition: $side-menu-open-speed;
+                    }
+                }
+                a {
+                    height: 100%;
+                    text-decoration: none;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    align-items: center;
+                    cursor: pointer;
+                    .icon {
+                        width: $icon-width;
+                        //background-color: orange;
+                        text-align: center;
+                        font-size: 30px;
+
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+                
+            }
+        }
+
+        &.active {
+            width: $width;
+            @media only screen and (max-width: $mobile-max-width) {
+                width: $side-menu-mobile-width;
+            }
+
+            ul{
+                
+                @media only screen and (max-width: $mobile-max-width) {
+                    width: $side-menu-mobile-width;
+                }
+                li.active{
+                    
+                    .selector {
+                        width: $width;
+                        @media only screen and (max-width: $mobile-max-width) {
+                            width: $side-menu-mobile-width;
+                        }
+                    }
+
+
+                }
+            }
+        }
+    }
+
+    
+}
+
+.root.light{
+    .navigation{
+        background-color: $light-primary;
+        .toggle{
+            span{
+                background-color: $light-accent;
+            }
+        }
+        ul{
+            li{
+                a{
+                    color: $light-secondary;
+                }
+                &.active{
+                    a {
+                        color: $light-primary;
+                    }
+                    .selector{
+                        background-color: $light-accent;
+                    }
+                }
+            }
+        }
+    }
+}
+.root.dark{
+    .navigation{
+        background-color: $dark-background;
+        .toggle{
+            span{
+                background-color: $dark-accent;
+            }
+        }
+        ul{
+            li{
+                a{
+                    color: $dark-secondary;
+                }
+                &.active{
+                    a {
+                        color: $dark-primary;
+                    }
+                    .selector{
+                        background-color: $dark-accent;
+                    }
+                }
+            }
+        }
+    }
+}
+.root.glassy{
+    .navigation{
+        background-color: $glassy-glass;
+        backdrop-filter: blur(10px);
+        border-right: $glassy-glass;
+        .toggle{
+            span{
+                background-color: $glassy-accent;
+            }
+        }
+        ul{
+            li{
+                a{
+                    color: $glassy-secondary;
+                }
+                &.active{
+                    a {
+                        color: $glassy-primary;
+                    }
+                    .selector{
+                        background-color: $glassy-secondary;
+                        //border-bottom: 1px solid rgba(171, 234, 253, 0.8);
+                        //border-right: 1px solid rgba(171, 234, 253, 0.8);
+                    }
+                }
+            }
+        }
+    }
+}

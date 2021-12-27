@@ -1,5 +1,7 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { StyleSelectorService } from 'src/app/style-selector.service';
+import { environment } from 'src/environments/environment';
 
 interface Page{
   name: string,
@@ -8,12 +10,24 @@ interface Page{
   active?: boolean
 }
 
+interface Theme{
+  name: string,
+  icon: string,
+  selector: string
+}
+
+interface ColorPalette{
+  name: string,
+  icon: string
+  selector: string
+}
+
 @Component({
   selector: 'app-navigation-bar',
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['./navigation-bar.component.scss']
 })
-export class NavigationBarComponent implements OnInit, AfterViewInit{
+export class NavigationBarComponent{
   pages: Page[] = [
     {
       name: 'Home',
@@ -32,9 +46,16 @@ export class NavigationBarComponent implements OnInit, AfterViewInit{
     }
   ];
 
+  colors: ColorPalette[] = environment.colors;
+
+
+  @Output() menuTriggerEmitter = new EventEmitter<boolean>();
+
   pageTitle: String = 'Placeholder'
 
-  constructor(public router: Router) { 
+  menuActive: boolean = false;
+
+  constructor(public router: Router, public styleService: StyleSelectorService) { 
     router.events.subscribe(event => {
       console.log(event);
       if(event instanceof NavigationEnd){
@@ -55,11 +76,14 @@ export class NavigationBarComponent implements OnInit, AfterViewInit{
     })
   }
 
-  ngAfterViewInit(): void {
+  triggerMenu(){
+    this.menuActive = !this.menuActive;
+    this.menuTriggerEmitter.emit(this.menuActive);
+    console.log("emitted");
   }
 
-  ngOnInit(): void {
+  switchTheme(color: ColorPalette){
+    this.styleService.colors = color.selector;
   }
-
 }
 

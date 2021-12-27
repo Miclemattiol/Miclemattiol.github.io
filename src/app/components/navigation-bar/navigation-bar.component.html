@@ -1,0 +1,36 @@
+<div class="root {{styleService.colors}} {{styleService.theme}}">
+    <div class="title">
+        <div class="display">
+            <span #title>{{this.pageTitle}}</span>
+        </div>
+    </div>
+    
+    <div class="navigation {{menuActive? 'active': ''}}">
+        <div class="toggle {{menuActive? 'active': ''}}" (click)="triggerMenu();">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul #navigationList>
+            <!--
+            <li [class]="page.active? 'active': ''" *ngFor="let page of pages">
+                <div class="selector"></div>
+                <a routerLink="{{page.href}}" class="navigationAnchor">
+                    <div class="icon">
+                        <i [class]="page.icon"></i>
+                    </div>
+                    <span class="text">{{page.name}}</span>
+                </a>
+            </li>-->
+            <li [class]="color.selector == styleService.colors? 'active': ''" *ngFor="let color of colors">
+                <div class="selector"></div>
+                <a class="navigationAnchor" (click)="switchTheme(color)">
+                    <div class="icon">
+                        <i [class]="color.icon"></i>
+                    </div>
+                    <span class="text">{{color.name}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

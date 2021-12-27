@@ -3,7 +3,30 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  colors: [
+    {
+      name: "Light",
+      icon: "bi-sun",
+      selector: "light"
+    },
+    {
+      name: "Dark",
+      icon: "bi-moon",
+      selector: "dark"
+    },
+    {
+      name: "Glassy",
+      icon: "bi-aspect-ratio",
+      selector: "glassy"
+    }
+  ],
+  themes: [
+    {
+      name: "side-menu",
+      icon: ""
+    }
+  ]
 };
 
 /*

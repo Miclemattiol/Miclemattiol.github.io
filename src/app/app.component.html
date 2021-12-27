@@ -1,8 +1,11 @@
-<app-navigation-bar>
-  
-</app-navigation-bar>
-<div class="content">
-    <router-outlet>
-        
-    </router-outlet>
+<div class="root {{styleService.theme}} {{styleService.colors}} {{menuActive? 'active': ''}}">
+    <div class="background">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    <app-navigation-bar (menuTriggerEmitter)="triggerMenu($event)"></app-navigation-bar>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
 </div>
