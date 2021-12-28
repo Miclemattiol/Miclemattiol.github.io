@@ -16,9 +16,37 @@
         left: 0px;
         z-index: -1000;
         overflow: hidden;
+        transition: 0.5s;
 
         .bubble {
-            display: none;
+            transition: 0.5s;
+            opacity: 0;
+            content: " ";
+            position: absolute;
+            border-radius: 50%;
+            z-index: -10;
+
+            &:nth-child(1){
+                top: 100px;
+                left: -50px;
+                $bubble-size: 300px;
+                height: $bubble-size;
+                width: $bubble-size;
+            }
+            &:nth-child(2){
+                top: 500px;
+                left: 700px;
+                $bubble-size: 300px;
+                height: $bubble-size;
+                width: $bubble-size;
+            }
+            &:nth-child(3){
+                top: 700px;
+                left: 500px;
+                $bubble-size: 100px;
+                height: $bubble-size;
+                width: $bubble-size;
+            }
         }
     }
 
@@ -58,34 +86,8 @@
         background-color: $glassy-background;
 
         .bubble {
-            display: block;
-            background: linear-gradient(purple, lightblue);
-            content: " ";
-            position: absolute;
-            border-radius: 50%;
-            z-index: -10;
-
-            &:nth-child(1){
-                top: 100px;
-                left: -50px;
-                $bubble-size: 300px;
-                height: $bubble-size;
-                width: $bubble-size;
-            }
-            &:nth-child(2){
-                top: 500px;
-                left: 700px;
-                $bubble-size: 300px;
-                height: $bubble-size;
-                width: $bubble-size;
-            }
-            &:nth-child(3){
-                top: 700px;
-                left: 500px;
-                $bubble-size: 100px;
-                height: $bubble-size;
-                width: $bubble-size;
-            }
+            background: linear-gradient($glassy-accent, $glassy-accent-secondary);
+            opacity: 1;
         }
     }
 }

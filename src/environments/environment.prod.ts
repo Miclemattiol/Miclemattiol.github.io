@@ -19,8 +19,14 @@ export const environment = {
   ],
   themes: [
     {
-      name: "side-menu",
-      icon: ""
+      name: "Side menu",
+      icon: "",
+      selector: "side-menu"
+    },
+    {
+      name: "Drag menu",
+      icon: "",
+      selector: "drag-menu"
     }
   ]
 };

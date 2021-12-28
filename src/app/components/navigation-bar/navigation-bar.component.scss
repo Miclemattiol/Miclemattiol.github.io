@@ -140,7 +140,7 @@
                     .selector {
                         width: $width;
                         @media only screen and (max-width: $mobile-max-width) {
-                            width: $side-menu-mobile-width;
+                            width: $side-menu-mobile-selector-width;
                         }
                     }
 
@@ -148,9 +148,66 @@
                 }
             }
         }
-    }
+    }   
+}
 
+.root.drag-menu{
+    .navigation{
+        .toggle{
+                $btnSize: 50px;
+                $spanSize: 30px;
+                $span1Size: 20px;
+                $span2Size: 10px;
+                position: relative;
+                width: $btnSize;
+                height: $btnSize;
+                margin: 10px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                overflow: hidden;
+                cursor: pointer;
     
+                span {
+                    position: absolute;
+                    width: 30px;
+                    height: 4px;
+                    border-radius: 4px;
+                    transition: 0.5s;
+    
+                    &:nth-child(1) {
+                        transform: translateY(-10px);
+                        width: $span1Size;
+                        left: 10px;
+                    }
+                    &:nth-child(2) {
+                        transform: translateY(10px);
+                        width: $span2Size;
+                        left: 10px;
+                    }
+                }
+    
+                &.active {
+                    span {
+                        &:nth-child(1) {
+                            width: $spanSize;
+                            transform: translateY(0) rotate(45deg);
+                            transition-delay: 0.125s;
+                        }
+                        &:nth-child(2) {
+                            width: $spanSize;
+                            transform: translateY(0) rotate(315deg);
+                            transition-delay: 0.125s;
+                        }
+                        &:nth-child(3) {
+                            transform: translateX($btnSize);
+                        }
+                    }
+                }
+        }
+    }
 }
 
 .root.light{
@@ -211,6 +268,13 @@
         .toggle{
             span{
                 background-color: $glassy-accent;
+            }
+
+            &.active{
+
+                span{
+                    background-color: $glassy-accent-secondary;
+                }
             }
         }
         ul{
